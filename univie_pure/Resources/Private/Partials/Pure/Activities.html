@@ -1,0 +1,24 @@
+
+
+<f:for each="{activities.1}" as="activity">
+	
+	<div class="activities ucris content-element-margin-small">
+		<h2>{activity.title.0.value}</h2>
+		<div class="persons">
+			<f:for each="{activity.personAssociations}" as="person" iteration="personIter">
+				{person.name.firstName} {person.name.lastName}
+				<f:if condition="{personIter.isLast}"><f:else>, </f:else></f:if>
+			</f:for>
+		</div>
+		<div class="event">
+			<f:if condition="{activity.event.name.0.value}"><f:then>{activity.event.name.0.value}, </f:then></f:if>
+			<f:if condition="{activity.event.type.0.value}"><f:then>{activity.event.type.0.value}, </f:then></f:if>
+			<f:if condition="{activity.type.0.value}"><f:then>{activity.type.0.value}</f:then></f:if>
+		</div>
+		<div class="period">
+			{activity.period.startDate.day}.{activity.period.startDate.month}.{activity.period.startDate.year} - {activity.period.endDate.day}.{activity.period.endDate.month}.{activity.period.endDate.year}
+		</div>
+		<div><a href="{activity.info.portalUrl}" target="_blank"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.more" /></a></div>
+	</div>
+	<hr style="border-top: 1px solid #e4e4e4;" />
+</f:for>

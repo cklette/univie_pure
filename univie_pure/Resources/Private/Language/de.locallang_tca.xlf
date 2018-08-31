@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2016-01-19T13:00:54Z" product-name="univiepure">
+		<header/>
+		<body>
+			<trans-unit id="flexform.sDEF">
+				<source>General Settings</source>
+				<target>Allgemeine Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="flexform.what_to_display">
+				<source>What to display:</source>
+				<target>Was wird angezeigt:</target>
+			</trans-unit>
+			<trans-unit id="flexform.what_to_display.detail">
+				<source>Detail View</source>
+				<target>Detail-Ansicht</target>
+			</trans-unit>
+			<trans-unit id="flexform.what_to_display.publications">
+				<source>List of Publications</source>
+				<target>Liste von Publikationen</target>
+			</trans-unit>
+			<trans-unit id="flexform.what_to_display.activities">
+				<source>List of Activities</source>
+				<target>Liste von Aktivitäten</target>
+			</trans-unit>
+			<trans-unit id="flexform.what_to_display.pressMedia">
+				<source>List of Press-Media</source>
+				<target> Liste von Presse/Medien Einträgen</target>
+			</trans-unit>
+			<trans-unit id="flexform.what_to_display.projects">
+				<source>List of Projects</source>
+				<target>Liste von Projekten</target>
+			</trans-unit>
+			<trans-unit id="flexform.singlePid">
+				<source>PID of page with Detail View</source>
+				<target>PID der Seite mit der Detailansicht</target>
+			</trans-unit>
+			<trans-unit id="flexform.pageSize">
+				<source>Entries per Page (default = 20 before pager is shown, max = 50):</source>
+				<target>Einträge pro Seite (Vorgabe = 20 bevor die Paginierung angezeigt wird, Maximum = 50)</target>
+			</trans-unit>
+			<trans-unit id="flexform.showSearchForm">
+				<source>Show Search Form:</source>
+				<target>Suchformular anzeigen:</target>
+			</trans-unit>
+			<trans-unit id="flexform.pager.insertAbove">
+				<source>Show Pager above:</source>
+				<target>Zeige die Paginierung oberhalb:</target>
+			</trans-unit>
+			<trans-unit id="flexform.pager.insertBelow">
+				<source>Show Pager below:</source>
+				<target>Zeige die Paginierung unterhalb:</target>
+			</trans-unit>
+			<trans-unit id="flexform.common.settings">
+				<source>Units and Persons</source>
+				<target>Einheiten und Personen</target>
+			</trans-unit>
+			<trans-unit id="flexform.common.ChooseSelector">
+				<source>Show u:cris entries either for organisational units or for persons:</source>
+				<target>Zeige Einträge aus u:cris entweder für Organisationseinheiten oder für einzelne Personen:</target>
+			</trans-unit>
+			<trans-unit id="flexform.common.selectByUnit">
+				<source>Show list of chosen endpoint for Organisational Units:</source>
+				<target>Für Organisationseinheiten</target>
+			</trans-unit>
+			<trans-unit id="flexform.common.selectByPerson">
+				<source>Show list of chosen endpoint for Person(s):</source>
+				<target>Für Personen</target>
+			</trans-unit>
+			<trans-unit id="flexform.common.selectOrganisation">
+				<source>Show list for selected Organisation:</source>
+				<target>Zeige Einträge für ausgewählte Organisationseinheiten:</target>
+			</trans-unit>
+			<trans-unit id="flexform.common.includeSubUnits">
+				<source>Include all sub units for the chosen Organisation:</source>
+				<target>Alle Subeinheiten der gewählten Organisation einschließen:</target>
+			</trans-unit>
+			<trans-unit id="flexform.common.narrowByPerson">
+				<source>Narrow selection by manually choosing Person(s):</source>
+				<target>Auswahl auf Personen einschränken:</target>
+			</trans-unit>
+			<trans-unit id="flexform.common.selectPerson">
+				<source>Show list for selected Person(s):</source>
+				<target>Zeige Einträge für ausgewählte Personen:</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications">
+				<source>In Depth Settings for Publications</source>
+				<target>Erweiterte Einstellungen für Publikationen</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.narrowByPublicationType">
+				<source>Narrow Selection by choosing Publication Type:</source>
+				<target>Auswahl auf Publikationstypen einschränken:</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.selectPublicationType">
+				<source>Select Publications by Type:</source>
+				<target>Wähle Publikationen nach Typus:</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.narrowBySearch">
+				<source>Choose Publications by searchterms (separated by OR or AND if more than 1 entry):</source>
+				<target>Zeige Publikationen anhand von Suchbegriffen (separiert durch OR oder AND bei mehreren Einträgen):</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.searchPlaceholder">
+				<source>searchterm OR searchterm1 OR search...</source>
+				<target>Suchbegriff OR Suchbegriff1 OR Such...</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.publishedBeforeDate">
+				<source>Published before date (2025-12-31):</source>
+				<target>Publiziert vor dem Datum (2025-12-31):</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.publishedBeforePlaceholder">
+				<source>2025-12-31</source>
+				<target>2025-12-31</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.publishedAfterDate">
+				<source>Published after date (1970-01-01):</source>
+				<target>Publiziert nach dem Datum (1970-01-01):</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.publishedAfterPlaceholder">
+				<source>1970-01-01</source>
+				<target>1970-01-01</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.groupByYear">
+				<source>Group Publications by Year (and give a headline for each year):</source>
+				<target>Publikationen nach Jahr gruppieren (und jeweils eine Überschrift pro Jahr anzeigen):</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.peerReviewedOnly">
+				<source>Show only Peer-Reviewed Publications:</source>
+				<target>Nur Peer-Reviewed Publikationen anzeigen:</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.showPublicationType">
+				<source>Show Publication status (but only if status is not 'published'):</source>
+				<target>Publikationsstatus anzeigen (nur falls der Status nicht 'Publiziert' ist):</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.ordering">
+				<source>Order by:</source>
+				<target>Ordne Ergebnis nach:</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.ordering.year-desc">
+				<source>Year 9-1</source>
+				<target>Jahr 9-1</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.ordering.year-asc">
+				<source>Year 1-9</source>
+				<target>Jahr 1-9</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.ordering.firstAuthor-asc">
+				<source>First author a-z</source>
+				<target>Erstautor a-z</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.ordering.firstAuthor-desc">
+				<source>First author z-a</source>
+				<target>Erstautor z-a</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.ordering.authorLastName-asc">
+				<source>Author a-z</source>
+				<target>Autor a-z</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.ordering.authorLastName-desc">
+				<source>Author z-a</source>
+				<target>Autor z-a</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.ordering.publicationYearAndAuthor-desc">
+				<source>Year and author descending</source>
+				<target>Jahr und Autor z-a</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.ordering.publicationYearAndAuthor-asc">
+				<source>Publication year and author ascending</source>
+				<target>Jahr und Autor a-z</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.ordering.title-asc">
+				<source>Title ascending</source>
+				<target>Titel a-z</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.ordering.title-desc">
+				<source>Title descending</source>
+				<target>Titel z-a</target>
+			</trans-unit>
+			<trans-unit id="flexform.publications.rendering">
+				<source>Citation style (Vancouver, Harvard...):</source>
+				<target>Zitierstil (Vancouver, Harvard...):</target>
+			</trans-unit>
+			<trans-unit id="flexform.activities">
+				<source>In Depth Settings for Activities</source>
+				<target>Erweiterte Einstellungen für Aktivitäten</target>
+			</trans-unit>
+			<trans-unit id="flexform.activities.narrowByActivitiesType">
+				<source>Narrow selection by choosing Activity Type:</source>
+				<target>Auswahl auf Typus der Aktivität einschränken:</target>
+			</trans-unit>
+			<trans-unit id="flexform.activities.selectActivitiesType">
+				<source>Select Activities by Type:</source>
+				<target>Wähle Aktivität nach Typus:</target>
+			</trans-unit>
+			<trans-unit id="flexform.pressMedia">
+				<source>In Depth Settings for Press/Media</source>
+				<target>Erweiterte Einstellungen für Presse/Medien</target>
+			</trans-unit>
+			<trans-unit id="flexform.pressMedia.narrowByPressMediaType">
+				<source>Narrow selection by choosing Press/Media Type:</source>
+				<target>Auswahl auf Typus von Presse/Medium einschränken:</target>
+			</trans-unit>
+			<trans-unit id="flexform.pressMedia.selectPressMediaType">
+				<source>Select Press/Media by Type:</source>
+				<target>Wähle Presse/Medium nach Typus:</target>
+			</trans-unit>
+			<trans-unit id="flexform.projects">
+				<source>In Depth Settings for Projects</source>
+				<target>Erweiterte Einstellungen für Projekte</target>
+			</trans-unit>
+			<trans-unit id="flexform.projects.orderProjects">
+				<source>Order projects:</source>
+				<target>Ordne Projekte nach:</target>
+			</trans-unit>
+			<trans-unit id="flexform.projects.orderProjects.startDate.desc">
+				<source>Startdate 9-1</source>
+				<target>Anfangsdatum 9-1</target>
+			</trans-unit>
+			<trans-unit id="flexform.projects.orderProjects.startDate.asc">
+				<source>Startdate 1-9</source>
+				<target>Anfangsdatum 1-9</target>
+			</trans-unit>
+			<trans-unit id="flexform.projects.orderProjects.title.asc">
+				<source>Title a-z</source>
+				<target>Titel a-z</target>
+			</trans-unit>
+			<trans-unit id="flexform.projects.orderProjects.title.desc">
+				<source>Title z-a</source>
+				<target>Titel z-a</target>
+			</trans-unit>
+			<trans-unit id="flexform.projects.filterProjects">
+				<source>Projekte Filtern:</source>
+			</trans-unit>
+			<trans-unit id="flexform.projects.filterProjects.none">
+				<source></source>
+				<target></target>
+			</trans-unit>
+			<trans-unit id="flexform.projects.filterProjects.not-started">
+				<source>Not Started</source>
+				<target>Noch nicht begonnen</target>
+			</trans-unit>
+			<trans-unit id="flexform.projects.filterProjects.running">
+				<source>Running</source>
+				<target>Laufend</target>
+			</trans-unit>
+			<trans-unit id="flexform.projects.filterProjects.finished">
+				<source>Finished</source>
+				<target>Bedendet</target>
+			</trans-unit>
+			<trans-unit id="univiepure.plus_wizard_description">
+				<source>Vienna u:cris extension for pure research information system</source>
+				<target>u:cris Plug-In für das Forschungsinformationssystem der Universität Wien</target>
+			</trans-unit>
+			<trans-unit id="univiepure.title">
+				<source>u:cris NEU</source>
+				<target>u:cris NEU</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

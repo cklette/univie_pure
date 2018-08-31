@@ -1,0 +1,136 @@
+
+<div class="tx-univie-pure publication" >
+	
+		<h1 class=" content-element-margin">{publication.title}</h1>
+		
+		<dl class="row">
+			<!--
+			<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.abstract" /></dt>
+			<dd class="col-sm-9 content-element-margin-small"></dd>
+			-->
+			
+			<!-- AUTHORS -->
+			<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.authors" /></dt>
+			<dd class="col-sm-9 content-element-margin-small">
+				<f:for each="{publication.personAssociations}" as="person" iteration="persIter">
+					{person.name.firstName} {person.name.lastName}
+					<f:if condition="{persIter.isLast}"><f:else>, </f:else></f:if>
+				</f:for>
+			</dd>
+			
+			<!-- ABSTRACT -->
+			<f:if condition="{publication.abstract.0.value}">
+				<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.abstract" /></dt>
+				<dd class="col-sm-9 content-element-margin-small"><f:format.html>{publication.abstract.0.value}</f:format.html></dd>
+			</f:if>
+			
+			<!-- UNITS -->
+			<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.units" /></dt>
+			<dd class="col-sm-9 content-element-margin-small">
+				<f:for each="{publication.organisationalUnits}" as="unit" iteration="unitIter">
+					{unit.name.0.value}
+					<f:if condition="{unitIter.isLast}"><f:else>, </f:else></f:if>
+				</f:for>
+			</dd>
+			
+			<!-- JOURNAL -->
+			<f:if condition="{publication.journalAssociation.title.value}">
+				<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.journal" /></dt>
+				<dd class="col-sm-9">{publication.journalAssociation.title.value}</dd>
+			</f:if>
+			
+			<!-- JOURNAL VOLUME -->
+			<f:if condition="{publication.volume}">
+				<f:then>
+					<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.volume" /></dt>
+					<dd class="col-sm-9">{publication.volume}</dd>
+				</f:then>
+			</f:if>
+			
+			<!-- JOURNAL PAGES -->
+			<f:if condition="{publication.pages}">
+				<f:then>
+					<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.pages" /></dt>
+					<dd class="col-sm-9">{publication.pages}</dd>
+				</f:then>
+			</f:if>
+			
+			<!-- NO. OF PAGES -->
+			<f:if condition="{publication.numberOfPages}">
+				<f:then>
+					<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.numberOfPages" /></dt>
+					<dd class="col-sm-9 content-element-margin-small">{publication.numberOfPages}</dd>
+				</f:then>
+			</f:if>
+			
+			<!-- ISSN -->
+			<f:if condition="{publication.journalAssociation.issn}">
+				<f:then>
+					<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.issn" /></dt>
+					<dd class="col-sm-9">{publication.journalAssociation.issn.value}</dd>
+				</f:then>
+			</f:if>
+			
+			<!-- DOI -->
+			<f:if condition="{publication.electronicVersions.0.doi}">
+				<f:then>
+					<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.doi" /></dt>
+					<dd class="col-sm-9 content-element-margin-small"><a href="{publication.electronicVersions.0.doi}" target="_blank">{publication.electronicVersions.0.doi}</a></dd>
+				</f:then>
+			</f:if>
+			
+			<!-- DATE -->
+			<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.publicationDate" /></dt>
+			<dd class="col-sm-9">
+				<f:if condition="{publication.publicationStatuses.0.publicationDate.month}">
+					<f:then>
+						<f:format.padding padLength="2" padString="0" padType="left">{publication.publicationStatuses.0.publicationDate.month}</f:format.padding>-{publication.publicationStatuses.0.publicationDate.year}
+					</f:then>
+					<f:else>
+						{publication.publicationStatuses.0.publicationDate.year}
+					</f:else>
+				</f:if>
+				
+			</dd>
+			
+			<!-- STATUS -->
+			<f:if condition="{publication.publicationStatuses.0.publicationStatus.0.value}">
+				<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.publicationStatus" /></dt>
+				<dd class="col-sm-9">{publication.publicationStatuses.0.publicationStatus.0.value}</dd>
+			</f:if>
+			
+			<!-- PEER REVIEW -->
+			<f:if condition="{publication.peerReview}">
+				<f:then>
+					<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.peerReviewed" /></dt>
+					<dd class="col-sm-9 content-element-margin-small">
+						<f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.peerReviewed-true" />
+					</dd>
+				</f:then>
+			</f:if>
+			
+			<!-- KEYWORDS -->
+			<f:if condition="{publication.keywordGroups}">
+				<f:then>
+					<f:for each="{publication.keywordGroups}" as="keywordsGroup">
+						<f:if condition="{keywordsGroup.keywords}">
+							<f:then>
+								<dt class="col-sm-3">{keywordsGroup.type.0.value}</dt>
+								<dd class="col-sm-9 content-element-margin-small">
+									<f:for each="{keywordsGroup.keywords}" as="keyword" iteration="keywordIter">
+										{keyword.value}<f:if condition="{keywordIter.isLast}"><f:else>, </f:else></f:if>
+									</f:for>
+								</dd>
+							</f:then>
+						</f:if>
+					</f:for>
+				</f:then>
+			</f:if>
+			
+			<!-- PORTAL URL -->
+			<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.portalUrl" /></dt>
+			<dd class="col-sm-9 content-element-margin-small"><a href="{publication.info.portalUrl}" target="_blank">{publication.info.portalUrl}</a></dd>
+		
+		</dl>
+	
+</div>

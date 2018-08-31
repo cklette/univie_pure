@@ -1,0 +1,11 @@
+plugin.tx_univiepure.view{
+	templateRootPaths{
+		0 = EXT:univie_pure/Resources/Private/Templates/
+	}
+	partialRootPaths {
+		0 = EXT:univie_pure/Resources/Private/Partials/
+	}
+	layoutRootPaths {
+		0 = EXT:univie_pure/Resources/Private/Layouts/
+	}
+}
