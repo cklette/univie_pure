@@ -30,11 +30,12 @@
 
 <div class="c-pagination">
 
-		<div class="col-md-6">
-			{f:translate(key:'pagination.totalItems')} {totalItems.from} {f:translate(key:'pagination.to')} {totalItems.to} {f:translate(key:'pagination.outOf')} {totalItems.totalItems}</div>
-		<div class="col-md-6">
+
 			<f:if condition="{pagination.pages}">
 				<f:then>
+          <div class="col-md-6 c-pagination__totalResults">
+            {f:translate(key:'pagination.totalItems')} {totalItems.from} {f:translate(key:'pagination.to')} {totalItems.to} {f:translate(key:'pagination.outOf')} {totalItems.totalItems}</div>
+          <div class="col-md-6">
 						<div class="pagination-container" style="display:flex;justify-content:flex-end;align-items:center;">
 							<div class="pagination">
 								<!-- First -->

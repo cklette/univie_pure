@@ -23,10 +23,10 @@ plugin.tx_univiepure._CSS_DEFAULT_STYLE (
 		.rendering.rendering_upmproject.rendering_short.rendering_upmproject_short p {
 			margin-bottom: 0;
 		}
-		.col-md-6 .c-pagination__item {
-			text-decoration: none !important;
-			float:left;
-			color: #000 !important;
-			font-weight: 400 !important;
-		}
+		.c-pagination__totalResults {
+				text-decoration: none !important;
+				float:left;
+				color: #000;
+				font-weight: 400 !important;
+			}
 )
