@@ -31,35 +31,51 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * PublicationController
  */
-class WebService 
+class WebService
 {
-		
+
 	/**
 	 * @var $server String
 	 */
 	protected $server = '';
-		
+
 	/**
 	 * @var $apiKey String
 	 */
 	protected $apiKey = '';
-	
+
 	/**
 	 * @var $versionPath String
 	 */
 	protected $versionPath = '';
-	
+
 	/**
 	 * init
-	 */	
+	 */
 	public function __construct()
-	{ 
+	{
 		$extensionConfiguration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['univie_pure']);
 		$this->setServer($extensionConfiguration['pure_server']);
 		$this->setApiKey($extensionConfiguration['apiKey']);
 		$this->setVersionPath($extensionConfiguration['versionPath']);
 	}
-	
+
+
+	private function checkReturnCodeErrorMsg($data){
+ 	 if ( isset($data['code']) && $data['code'] != '200' ){
+ 			/** @var $flashMessage FlashMessage */
+ 			$flashMessage = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+ 			'TYPO3\\CMS\\Core\\Messaging\\FlashMessage',
+ 			htmlspecialchars($data['title']),
+ 			htmlspecialchars('PURE API Error'),
+ 			\TYPO3\CMS\Core\Messaging\FlashMessage::ERROR,false);
+ 			/** @var $flashMessageService \TYPO3\CMS\Core\Messaging\FlashMessageService */
+ 			$flashMessageService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Messaging\\FlashMessageService');
+ 			$defaultFlashMessageQueue = $flashMessageService->getMessageQueueByIdentifier();
+ 			$defaultFlashMessageQueue->enqueue($flashMessage);
+ 		}
+  }
+
 	/**
 	 * the call to the web service
 	 * @return String json or XML
@@ -68,36 +84,24 @@ class WebService
 	{
 		//curl -X GET --header 'Accept: application/xml' --header 'api-key: 751734f0-a671-4183-8865-dbd771042b46' 'https://cris-entw.univie.ac.at/ws/api/59/research-outputs-meta/orderings'
 		$url = $this->getServer() . $this->getVersionPath() . $endpoint;
-		$headers = array("api-key: " . $this->getApiKey() . "", "Content-Type: application/xml", "Accept: application/" . $responseType . "", "charset=utf-8"); 
-		$ch = curl_init($url);                                                                      
-		
-		curl_setopt($ch, CURLOPT_POST, true);   
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);                                                                   
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  
-		curl_setopt($ch, CURLINFO_HEADER_OUT, true); 
-		curl_setopt($ch, CURLOPT_PRIVATE, true); 
+		$headers = array("api-key: " . $this->getApiKey() . "", "Content-Type: application/xml", "Accept: application/" . $responseType . "", "charset=utf-8");
+		$ch = curl_init($url);
+
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+		curl_setopt($ch, CURLOPT_PRIVATE, true);
 		curl_setopt($ch, CURLOPT_VERBOSE, true);
 		curl_setopt($ch, CURLOPT_ENCODING, "");
 
 		$response = curl_exec($ch);
 		$info = curl_getinfo($ch);
-		//TODO: check for errors
-		if (isset($result['code'])) 
-		{
-			//error code was thrown
-			$message = GeneralUtility::makeInstance('\\TYPO3\\CMS\\Core\\Messaging\\FlashMessage',
-				   'Empty or no resultset from pure Server for endpoint ' . $endpoint . ', Error: ' . $result['code'],
-				   'Query failed',
-				   \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR, 
-				   FALSE
-				);
-			\TYPO3\CMS\Core\Messaging\FlashMessageQueue::addMessage($message);
-		}
 		curl_close($ch);
 		return $response;
 	}
-	
+
 	/**
 	 * request a json result
 	 * @return array result
@@ -106,20 +110,23 @@ class WebService
 	{
 		$json = $this->getResponse($endpoint, $data_string, 'json');
 		$result = json_decode($json,TRUE);
+		$this->checkReturnCodeErrorMsg($result);
+
 		return $result;
-		
+
 	}
-	
+
 	public function getXml($endpoint, $data_string){
 		$xmlResult = $this->getResponse($endpoint, $data_string, 'xml');
 
 		$xml = simplexml_load_string($xmlResult, null, LIBXML_PEDANTIC);
 		$result = json_decode(json_encode((array) $xml), 1);
+		$this->checkReturnCodeErrorMsg($result);
 
 		return $result;
 
 	}
-	
+
 	/**
 	 * setter for server
 	 */
@@ -127,7 +134,7 @@ class WebService
 	{
 		$this->server = $server;
 	}
-	
+
 	/** getter for server
 	 * @return String server
 	 */
@@ -135,7 +142,7 @@ class WebService
 	{
 		return $this->server;
 	}
-	
+
 	/**
 	 * setter for api-key
 	 */
@@ -143,7 +150,7 @@ class WebService
 	{
 		$this->apiKey = $apiKey;
 	}
-	
+
 	/**
 	 * getter for api-key
 	 * @return String api-key
@@ -152,7 +159,7 @@ class WebService
 	{
 		return $this->apiKey;
 	}
-	
+
 	/**
 	 * setter for version path e.g. /ws/api/59/
 	 */
@@ -160,7 +167,7 @@ class WebService
 	{
 		$this->versionPath = $versionPath;
 	}
-	
+
 	/**
 	 * getter for version path
 	 * @return String versionPath
