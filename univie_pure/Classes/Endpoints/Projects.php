@@ -61,6 +61,28 @@ class Projects
 	}
 	
 	/**
+	 * set the ordering
+	 * @return string xml
+	 */
+	public function getOrderingXml($order)
+	{
+		if(!$order) $order = '-startDate';//default
+		$xml = '<ordering>' . $order . '</ordering>';
+		return $xml;
+	}
+	
+	/**
+	 * set the filter
+	 * @return string xml
+	 */
+	public function getFilterXml($filter)
+	{
+		if(!$filter) return;
+		$xml = '<projectStatus>' . $filter . '</projectStatus>';
+		return $xml;
+	}
+	
+	/**
 	 * Complete available xml for POST query
 	 * @return String xml
 	 */
