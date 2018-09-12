@@ -32,7 +32,6 @@ class ResearchOutput
 
         $xml = '<?xml version="1.0"?>
 				<researchOutputsQuery>
-				<workflowSteps>approved</workflowSteps>
 				<linkingStrategy>portalLinkingStrategy</linkingStrategy>
 				<ordering>-publicationYear</ordering>
 				<returnUsedContent>true</returnUsedContent>

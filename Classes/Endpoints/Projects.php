@@ -35,6 +35,12 @@ class Projects
 			<ordering>-startDate</ordering>
 			<linkingStrategy>portalLinkingStrategy</linkingStrategy>';
 
+
+        // only show specific Results regarding there workflowSteps
+        if ($settings['projectWFlowSteps_validated'] == 1) {
+           $xml .= "<workflowStep>validated</workflowStep>";
+        }
+
         //set ordering:
         $xml .= $this->getOrderingXml($settings['orderProjects']);
 
@@ -57,7 +63,8 @@ class Projects
 
         $webservice = new WebService;
         $projects = $webservice->getJson('projects', $xml);
-
+        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($xml);
+        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($projects);
         return $projects;
     }
 

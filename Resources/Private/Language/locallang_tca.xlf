@@ -186,6 +186,9 @@
 			<trans-unit id="flexform.projects.orderProjects.title.desc">
 				<source>Title z-a</source>
 			</trans-unit>
+			<trans-unit id="flexform.projects.WFlowSteps_validated">
+				<source>Show only validated Projects:</source>
+			</trans-unit>
 			<trans-unit id="flexform.projects.filterProjects">
 				<source>Projekte Filtern:</source>
 			</trans-unit>

@@ -581,6 +581,15 @@
 							</config>
 						</TCEforms>
 					</settings.filterProjects>
+					<settings.projectWFlowSteps_validated>
+						<TCEforms>
+							<label>LLL:EXT:univie_pure/Resources/Private/Language/locallang_tca.xml:flexform.projects.WFlowSteps_validated</label>
+							<config>
+								<type>check</type>
+								<default>1</default>
+							</config>
+						</TCEforms>
+					</settings.projectWFlowSteps_validated>
 				</el>
 			</ROOT>
 		</Projects>
