@@ -112,7 +112,7 @@
 				<source>Show only publications that are in workflow status "forValidation":</source>
 			</trans-unit>
 			<trans-unit id="flexform.publications.onlypublicationStatusPublished">
-				<source>Show only publications with status "published":</source>
+				<source>Hide Publications that are not in status "published":</source>
 			</trans-unit>
 			<trans-unit id="flexform.publications.ordering">
 				<source>Order by:</source>
