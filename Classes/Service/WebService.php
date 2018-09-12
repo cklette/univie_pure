@@ -96,8 +96,6 @@ class WebService
             "charset=utf-8"
         );
         $ch = curl_init($url);
-        #	\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($headers);
-
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
@@ -109,7 +107,6 @@ class WebService
         $response = curl_exec($ch);
         $info = curl_getinfo($ch);
         curl_close($ch);
-        //	\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($response);
 
         return $response;
     }

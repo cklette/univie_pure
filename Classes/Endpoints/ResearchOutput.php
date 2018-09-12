@@ -55,6 +55,7 @@ class ResearchOutput
             $xml .= "<workflowSteps>forRevalidation</workflowSteps>";
         }
 
+
         //set locale:
         $xml .= CommonUtilities::getLocale();
 
