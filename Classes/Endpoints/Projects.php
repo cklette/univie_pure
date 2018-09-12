@@ -63,8 +63,6 @@ class Projects
 
         $webservice = new WebService;
         $projects = $webservice->getJson('projects', $xml);
-        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($xml);
-        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($projects);
         return $projects;
     }
 
