@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-01-19T13:00:54Z" product-name="univie_pure">
+		<header/>
+		<body>
+			<trans-unit id="univiepur.title">
+				<source>u:cris</source>
+				<target>u:cris</target>
+			</trans-unit>
+			<trans-unit id="univiepur.description">
+				<source>u:cris research information system</source>
+				<target>u:cris Forschungsinformationssystem</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.publication">
+				<source>Publication</source>
+				<target>Publikation</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.abstract">
+				<source>Abstract</source>
+				<target>Abstrakt</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.authors">
+				<source>Author(s)</source>
+				<target>Autor(en)</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.units">
+				<source>Organisation(s)</source>
+				<target>Organisation(en)</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.journal">
+				<source>Journal</source>
+				<target>Journal</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.issn">
+				<source>ISSN</source>
+				<target>ISSN</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.volume">
+				<source>Volume</source>
+				<target>Band</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.pages">
+				<source>Pages</source>
+				<target>Seiten</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.numberOfPages">
+				<source>No. of pages</source>
+				<target>Anzahl der Seiten</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.publicationDate">
+				<source>Publication date</source>
+				<target>Publikationsdatum</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.publicationStatus">
+				<source>Publication status</source>
+				<target>Publikationsstatus</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.peerReviewed">
+				<source>Peer reviewed</source>
+				<target>Peer-reviewed</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.peerReviewed-true">
+				<source>Yes</source>
+				<target>Ja</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.peerReviewed-false">
+				<source>No</source>
+				<target>Ja</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.doi">
+				<source>DOI</source>
+				<target>DOI</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.portalUrl">
+				<source>Portal url</source>
+				<target>Link zum Portal</target>
+			</trans-unit>
+			<trans-unit id="univiepur.more">
+				<source>More...</source>
+				<target>Mehr...</target>
+			</trans-unit>
+			<trans-unit id="univiepur.searchForm">
+				<source>Filter resultset:</source>
+				<target>Ergebnisse filtern:</target>
+			</trans-unit>
+			<trans-unit id="univiepur.searchSubmit">
+				<source>Filter</source>
+				<target>Filtern</target>
+			</trans-unit>
+			<trans-unit id="pagination.totalItems">
+				<source>Showing entries </source>
+				<target>Zeige Ergebnisse </target>
+			</trans-unit>
+			<trans-unit id="pagination.to">
+				<source> - </source>
+				<target> - </target>
+			</trans-unit>
+			<trans-unit id="pagination.outOf">
+				<source> out of </source>
+				<target> von </target>
+			</trans-unit>
+			<trans-unit id="pagination_first">
+				<source>First Page</source>
+			</trans-unit>
+			<trans-unit id="pagination_previous">
+				<source>Previous Page</source>
+				<target>Vorige Seite</target>
+			</trans-unit>
+			<trans-unit id="pagination_next">
+				<source>Next Page</source>
+				<target>Nächste Seite</target>
+			</trans-unit>
+			<trans-unit id="pagination_last">
+				<source>Last Page</source>
+				<target>Letzte Seite</target>
+			</trans-unit>
+			<trans-unit id="suggest-placeholder">
+				<source>Name, press enter</source>
+				<target>Name, Enter-taste drücken</target>
+			</trans-unit>
+			<trans-unit id="suggest-already-in-list">
+				<source> is already in the list!</source>
+				<target> ist bereits in der Liste!</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

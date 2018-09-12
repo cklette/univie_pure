@@ -1,0 +1,66 @@
+{namespace u=Univie\UniviePure\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<f:flashMessages renderMode="div" />
+
+
+<div class="tx_univiepure" >
+	<div class="content-element-margin-small">
+		
+		<f:if condition="{publications}">
+			<f:then>
+				<f:if condition="{settings.showSearchForm}">
+					<f:then>
+						<div class="pure-searchform row">
+							<div class="content-element-margin-zero">
+								<f:form action="list" name="pure-filter" noCache="1" method="POST" class="form-horizontal" additionalAttributes="{autocomplete: 'off'}">
+									<div class="col-sm-12 col-xs-12  col-md-12">
+										<label for="filter">
+											<f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.searchForm" />
+										</label>
+									</div>
+									<div class="col-sm-8 col-xs-12  col-md-8">
+										<f:form.textfield id="filter" class="form-control" type="text" name="filter" value="{filter}" />
+									</div>
+									<div class="col-sm-4 col-sm-12 col-md-4"  class="control-label">
+										<f:form.button type="submit" value="" class="btn btn-submit btn-default">
+											<f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.searchSubmit" />
+										</f:form.button>
+									</div>
+								</f:form>
+
+							</div>
+						</div>
+						<hr>
+					</f:then>
+				</f:if>
+				
+				<u:paginate objects="{publications}" as="publications" configuration="{itemsPerPage: settings.pageSize, insertAbove: settings.pager.insertAbove, insertBelow: settings.pager.insertBelow}" />
+				
+			</f:then>
+		</f:if> 
+		
+		<f:if condition="{activities}">
+			<f:then>
+				<u:paginate objects="{activities}" as="activities" configuration="{itemsPerPage: settings.pageSize, insertAbove: settings.pager.insertAbove, insertBelow: settings.pager.insertBelow}" />
+			</f:then>
+		</f:if>
+		
+		<f:if condition="{pressMedia}">
+			<f:then>
+				<u:paginate objects="{pressMedia}" as="pressMedia" configuration="{itemsPerPage: settings.pageSize, insertAbove: settings.pager.insertAbove, insertBelow: settings.pager.insertBelow}" />
+			</f:then>
+		</f:if>
+		
+		<f:if condition="{projects}">
+			<f:then>
+				<u:paginate objects="{projects}" as="projects" configuration="{itemsPerPage: settings.pageSize, insertAbove: settings.pager.insertAbove, insertBelow: settings.pager.insertBelow}" />
+			</f:then>
+		</f:if>
+
+	</div>
+</div>
+
+</f:section>
