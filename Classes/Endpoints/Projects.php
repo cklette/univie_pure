@@ -36,10 +36,10 @@ class Projects
 			<linkingStrategy>portalLinkingStrategy</linkingStrategy>';
 
         //set ordering:
-        //	$xml .= $this->getOrderingXml($settings['orderProjects']);
+        $xml .= $this->getOrderingXml($settings['orderProjects']);
 
         //set filter:
-//		$xml .= $this->getFilterXml($settings['filterProjects']);
+        $xml .= $this->getFilterXml($settings['filterProjects']);
 
         //set locale:
         $xml .= CommonUtilities::getLocale();
@@ -59,6 +59,32 @@ class Projects
         $projects = $webservice->getJson('projects', $xml);
 
         return $projects;
+    }
+
+    /**
+     * set the ordering
+     * @return string xml
+     */
+    public function getOrderingXml($order)
+    {
+        if (!$order) {
+            $order = '-startDate';
+        }//default
+        $xml = '<ordering>' . $order . '</ordering>';
+        return $xml;
+    }
+
+    /**
+     * set the filter
+     * @return string xml
+     */
+    public function getFilterXml($filter)
+    {
+        if (!$filter) {
+            return;
+        }
+        $xml = '<projectStatus>' . $filter . '</projectStatus>';
+        return $xml;
     }
 
     /**
