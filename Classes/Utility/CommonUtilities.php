@@ -122,8 +122,10 @@ class CommonUtilities
             //check for sub units:
             if ($settings['includeSubUnits'] == 1) {
                 $subUnits = self::getSubUnits($org);
+
                 if (is_array($subUnits) && count($subUnits) > 1) {
                     foreach ($subUnits as $subUnit) {
+
                         if ($subUnit['uuid'] != $org) {
                             $xml .= '<uuids>' . $subUnit['uuid'] . '</uuids>';
                         }
@@ -161,6 +163,7 @@ class CommonUtilities
 
     /**
      * query sub organisations for a unit
+     * ToDo: There is a bug in the Pure API. We internally use searchSubOrgs to circumvent the problem.
      * @return array subUnits Array of all Units connected
      */
     public static function getSubUnits($orgId)
@@ -170,18 +173,50 @@ class CommonUtilities
 				<organisationalUnitsQuery>
 					<searchString>' . $orgName . '</searchString>
 					<size>1000</size>
-					<fields>uuid</fields>
 					<ordering>type</ordering>
 					<returnUsedContent>true</returnUsedContent>
 					<navigationLink>true</navigationLink>
 					<organisationalUnitPeriodStatus>ACTIVE</organisationalUnitPeriodStatus>
 				</organisationalUnitsQuery>';
         $webservice = new WebService;
-        $subUnits = $webservice->getJson('organisational-units', $xml);
-        if ($subUnits['count'] > 1) {
-            return $subUnits['items'];
+        $brokenSubUnits = $webservice->getJson('organisational-units', $xml);
+
+        if ($brokenSubUnits['count'] > 1) {
+            $realSubNodes = self::searchSubOrgs($brokenSubUnits['items'], "uuid", $orgId);
+            return $realSubNodes;
         }
+
     }
+
+    /**
+     * workaround for real results for getting all organizational units for a given organizational unit
+     * @return array of child organizational units
+     */
+    public static function searchSubOrgs($array, $key, $value)
+    {
+        $parent_key = "parents";
+        // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($array);
+
+        $results = array();
+        if (is_array($array)) {
+            if (isset($array[$key]) && $array[$key] == $value) {
+                $results[] = $array;
+            }
+            foreach ($array as $subarray) {
+                $results = array_merge($results, self::searchSubOrgs($subarray, $key, $value));
+                foreach ($results as $result) {
+                    if (isset($subarray[$parent_key][0][$key]) && isset($result[$key])) {
+                        if ($subarray[$parent_key][0][$key] == $result[$key]) {
+                            $results[] = $subarray;
+                        }
+                    }
+                }
+            }
+        }
+
+        return $results;
+    }
+
 
     /*
      * query name by uuid
