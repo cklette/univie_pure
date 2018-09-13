@@ -1,0 +1,32 @@
+
+plugin.tx_univiepure.view{
+	templateRootPaths{
+		0 = EXT:univie_pure/Resources/Private/Templates/
+	}
+	partialRootPaths {
+		0 = EXT:univie_pure/Resources/Private/Partials/
+	}
+	layoutRootPaths {
+		0 = EXT:univie_pure/Resources/Private/Layouts/
+	}
+}
+
+
+plugin.tx_univiepure._CSS_DEFAULT_STYLE (
+		div.projects > div > h2 {
+			font-size: inherit;
+			text-rendering: optimizeLegibility;
+			text-align: left;
+			margin-bottom: 0;
+		}
+
+		.rendering.rendering_upmproject.rendering_short.rendering_upmproject_short p {
+			margin-bottom: 0;
+		}
+		.c-pagination__totalResults {
+				text-decoration: none !important;
+				float:left;
+				color: #000;
+				font-weight: 400 !important;
+			}
+)
