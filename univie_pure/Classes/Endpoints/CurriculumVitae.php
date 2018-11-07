@@ -33,7 +33,7 @@ class CurriculumVitae
 				</curriculumVitaeQuery>';
 		$webservice = new WebService;
 		$cv = $webservice->getJson('curricula-vitae', $xml); 
-		//debug($cv,'cv');
+
 		return $cv['items'][0];
 	}
 }

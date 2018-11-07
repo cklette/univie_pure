@@ -56,8 +56,8 @@
 				<target>Einheiten und Personen</target>
 			</trans-unit>
 			<trans-unit id="flexform.common.ChooseSelector">
-				<source>Show u:cris entries either for organisational units or for persons:</source>
-				<target>Zeige Einträge aus u:cris entweder für Organisationseinheiten oder für einzelne Personen:</target>
+				<source>Choose entity for which to show entries:</source>
+				<target>Wählen Sie die Einheit für die Einträge angezeigt werden sollen:</target>
 			</trans-unit>
 			<trans-unit id="flexform.common.selectByUnit">
 				<source>Show list of chosen endpoint for Organisational Units:</source>
@@ -66,6 +66,10 @@
 			<trans-unit id="flexform.common.selectByPerson">
 				<source>Show list of chosen endpoint for Person(s):</source>
 				<target>Für Personen</target>
+			</trans-unit>
+			<trans-unit id="flexform.common.selectByProject">
+				<source>Show list of chosen endpoint for Project(s):</source>
+				<target>Für Projekte</target>
 			</trans-unit>
 			<trans-unit id="flexform.common.selectOrganisation">
 				<source>Show list for selected Organisation:</source>

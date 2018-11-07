@@ -80,7 +80,7 @@
 				<target>Mehr...</target>
 			</trans-unit>
 			<trans-unit id="univiepur.searchForm">
-				<source>Filter resultset:</source>
+				<source>Filter results:</source>
 				<target>Ergebnisse filtern:</target>
 			</trans-unit>
 			<trans-unit id="univiepur.searchSubmit">

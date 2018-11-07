@@ -61,7 +61,7 @@
 				<source>More...</source>
 			</trans-unit>
 			<trans-unit id="univiepur.searchForm">
-				<source>Filter resultset:</source>
+				<source>Filter results:</source>
 			</trans-unit>
 			<trans-unit id="univiepur.searchSubmit">
 				<source>Filter</source>

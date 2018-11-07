@@ -70,7 +70,6 @@ class WebService
 		$url = $this->getServer() . $this->getVersionPath() . $endpoint;
 		$headers = array("api-key: " . $this->getApiKey() . "", "Content-Type: application/xml", "Accept: application/" . $responseType . "", "charset=utf-8"); 
 		$ch = curl_init($url);                                                                      
-		
 		curl_setopt($ch, CURLOPT_POST, true);   
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);                                                                   
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
@@ -79,7 +78,6 @@ class WebService
 		curl_setopt($ch, CURLOPT_PRIVATE, true); 
 		curl_setopt($ch, CURLOPT_VERBOSE, true);
 		curl_setopt($ch, CURLOPT_ENCODING, "");
-
 		$response = curl_exec($ch);
 		$info = curl_getinfo($ch);
 		//TODO: check for errors

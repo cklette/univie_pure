@@ -94,7 +94,6 @@ class ClassificationScheme
 					</personsQuery>';
 			$webservice = new WebService;
 			$persons = $webservice->getJson('persons',$xml);
-
 			foreach($persons['items'] as $pers)
 			{
 				$item = array($pers['name']['lastName'] . ', ' . $pers['name']['firstName'],$pers['uuid']);
@@ -108,7 +107,6 @@ class ClassificationScheme
 			<input type="text" name="query" id="query" placeholder="' 
 				. \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('suggest-placeholder','univie_pure') . 
 			'" autocomplete="off">'; 
-        
         if(isset($items))
         {
 			$output .= '<div class="typo3-TCEforms-suggest-choices" id="typo3-ucris-persons-suggest">
@@ -151,7 +149,87 @@ class ClassificationScheme
 			</script>';
 		return $output;
 	}
-
+	
+	/* 
+	 * Ajax call for backend choosing projects:
+	 * @param \TYPO3\CMS\Backend\Form\FormEngine $tceForms Reference to an TCEforms instance
+	 */
+	public function ajaxGetProject($PA, $fObj)
+	{
+		$query = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('query');
+	
+		if($query)
+		{
+			$items = array();
+			$xml ='<projectsQuery>
+						<searchString>' . $query . '</searchString>
+						<locale>' . $this->getLocale() . '</locale>
+						<size>100</size>
+						<fields>acronym</fields>
+						<fields>uuid</fields>
+						<fields>title.*</fields>
+					</projectsQuery>';
+			$webservice = new WebService;
+			$projects = $webservice->getJson('projects',$xml);
+			foreach($projects['items'] as $project)
+			{
+				$title = $project['title'][0]['value'];
+				if(isset($project['acronym'])) $title .= ' - ' . $project['acronym'];
+				$item = array($title,$project['uuid']);
+				array_push($items,$item);
+			}
+		}
+		//debug($items, 'items');
+        // Put the wizard into $output and return it
+        $output = '<style>.typo3-TCEforms-suggest-resultlist li:hover{background-color:#ffb;}</style>
+			<div style="margin-top: 8px; margin-left: 4px;">
+			<input type="text" name="query" id="query" placeholder="' 
+				. \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('suggest-placeholder','univie_pure') . 
+			'" autocomplete="off">'; 
+        
+        if(isset($items))
+        {
+			$output .= '<div class="typo3-TCEforms-suggest-choices" id="typo3-ucris-projects-suggest">
+			<ul class="typo3-TCEforms-suggest-resultlist">';
+			foreach($items as $item)
+			{
+				$output .= '<li onclick="addToList(this.id)" id="' . $item[1] . '">
+						<span class="suggest-label"><span title="' . $item[0] . '">' . $item[0] . '</span></span><br><span class="suggest-uid">' . $item[1] . '</span>
+					</li>';
+			}
+			$output .= '</ul></div>';
+		}
+		//debug($PA['itemName'], '$PA itemname');
+        $output .= '</div>
+			<script>
+			function addToList(id){
+				var x = document.getElementById(id);
+				var nodeList = x.childNodes;
+				var opt = document.createElement("option");
+				opt.value = id;
+				opt.text = nodeList[1].innerText;
+				opt.setAttribute("selected", true);
+				opt.setAttribute("id", id);
+				var sel = document.getElementsByName("' . $PA['itemName'] . '");
+				for(var i=0; i < sel[0].options.length; i++){
+					optCheck = sel[0].options[i];
+					if(optCheck.value == id){
+						alert(opt.text + "' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('suggest-already-in-list','univie_pure') . '");
+						closeDiv();
+						return;
+					}
+				}
+				
+				sel[0].appendChild(opt);
+				closeDiv();
+			}
+			function closeDiv(){
+				var parentDiv = document.getElementById("typo3-ucris-projects-suggest");
+				parentDiv.setAttribute("style", "display:none");
+			}
+			</script>';
+		return $output;
+	}
 
 	/**
 	 *
@@ -223,7 +301,54 @@ class ClassificationScheme
 			}
 		}
 	}
-
+	
+	/*
+	 * Projects list for select project func
+	 */
+	public function getProjects(&$config)
+	{
+		$items = array();
+		$settings = $config['flexParentDatabaseRow']['pi_flexform'];
+		$projectsList = $settings['data']['Common']['lDEF']['settings.selectorProjects']['vDEF'];
+		if($projectsList != '')
+		{
+			$projects = explode(',',$projectsList);
+		}
+		
+		$projectsXML = '<?xml version="1.0"?>
+				<projectsQuery>
+					<locale>' . $this->getLocale() . '</locale>
+					<fields>uuid</fields>
+					<fields>acronym</fields>
+					<fields>title.*</fields>
+					<ordering>title</ordering>
+					<size>20000</size>';
+		if(count($projects) > 0)
+		{
+			foreach((array) $projects as $project)
+			{
+				if(strpos($project, "|"))
+				{
+					$tmp = explode("|", $project);
+					$project = $tmp[0];
+				}
+				$projectsXML .= '<uuids>'. $project . '</uuids>';
+			}
+		
+			$projectsXML .= '</projectsQuery>';
+			$webservice = new WebService;
+			$ucrisProjects = $webservice->getJson('projects',$projectsXML);
+			foreach($ucrisProjects['items'] as $proj)
+			{
+				$title = $proj['title'][0]['value'];
+				if($proj['acronym']) $title .= ' - ' . $proj['acronym'];
+				$item = array($title, $proj['uuid']);
+				array_push($config['items'],$item);
+			}
+		}
+	}
+	
+	
 	/**
 	 * structural query for publication types
 	 * @return String xml
@@ -451,7 +576,25 @@ class ClassificationScheme
 		}
 		return $uuid;
 	 }
+	 
+	/**
+	 * itemsProcFunc for TCA, show selector for Units, Persons Projects for Research-Output, Units, Persons otherwise
+	 */
+	public function getItemsToChoose(&$config, $PA)
+	{
 
+		array_push($config['items'],array($GLOBALS['LANG']->sL('LLL:EXT:univie_pure/Resources/Private/Language/locallang_tca.xml:flexform.common.selectByUnit', TRUE),0));
+		array_push($config['items'],array($GLOBALS['LANG']->sL('LLL:EXT:univie_pure/Resources/Private/Language/locallang_tca.xml:flexform.common.selectByPerson', TRUE),1));
+		//Do this only for PUBLICATIONS:
+		$settings = $config['flexParentDatabaseRow']['pi_flexform'];
+		//debug($settings, 'settings');
+		if($settings['data']['sDEF']['lDEF']['settings.what_to_display']['vDEF'][0] == 'PUBLICATIONS')
+		{
+			array_push($config['items'],array($GLOBALS['LANG']->sL('LLL:EXT:univie_pure/Resources/Private/Language/locallang_tca.xml:flexform.common.selectByProject', TRUE),2));
+		}
+		
+	}
+	
 	/**
 	 * Complete available xml for POST query
 	 * @return String xml

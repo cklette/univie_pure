@@ -84,17 +84,22 @@ class CommonUtilities
 	 */
 	public static function getPersonsOrOrganisationsXml($settings)
 	{
-		//either for organisations or for persons, both must not be submitted:
-		//If settings.chooseSelector equals 0 => organisational units otherwise case 1 => persons:
-		if(($settings['chooseSelector'] == 0))
+		//either for organisations or for persons or for projects:
+		//If settings.chooseSelector equals 0 => organisational units, case 1 => persons, case 2 => projects:
+		switch($settings['chooseSelector'])
 		{
-			//Resarch-output for organisations:
-			$xml = self::getOrganisationsXml($settings);
-
-		}elseif($settings['chooseSelector'] == 1)
-		{
-			//Research-output for persons:
-			$xml = self::getPersonsXml($settings);
+			case 0:
+				//Resarch-output for organisations:
+				$xml = self::getOrganisationsXml($settings);
+				break;
+			case 1:
+				//Research-output for persons:
+				$xml = self::getPersonsXml($settings);
+				break;
+			case 2:
+				//Research-output for projects:
+				$xml = self::getProjectsXml($settings);
+				break;
 		}
 		return $xml;
 	}
@@ -158,6 +163,40 @@ class CommonUtilities
 		$xml .= '</forPersons>';
 		return $xml;
 	}
+	
+	/**
+	 * Projects query
+	 * @return String xml
+	 */
+	 public static function getProjectsXml($settings)
+	 {
+		if($settings['selectorProjects'] == '' && $settings['narrowBySearch'] != '') return '';
+		$xmlProjects = '<?xml version="1.0"?> 
+			<projectsQuery> 
+				<locale>de_DE</locale> 
+				<fields>relatedResearchOutputs.uuid</fields> 
+				<ordering>title</ordering> 
+				<size>20000</size>';
+		$projects = explode(',',$settings['selectorProjects']);
+		foreach((array) $projects as $project)
+		{
+			if(strpos($project, "|"))
+			{
+				$tmp = explode("|", $project); 
+				$project = $tmp[0];
+			}
+			$xmlProjects .= '<uuids>'. $project . '</uuids>';
+		}
+		$xmlProjects .= '</projectsQuery>';
+		$webservice = new WebService;
+		$publications = $webservice->getJson('projects', $xmlProjects); 
+
+		foreach($publications['items'][0]['relatedResearchOutputs'] as $researchOutput)
+		{
+			$xml .= '<uuids>'. $researchOutput['uuid'] . '</uuids>';
+		}
+		return $xml;
+	 }
 	
 	/**
 	 * query sub organisations for a unit

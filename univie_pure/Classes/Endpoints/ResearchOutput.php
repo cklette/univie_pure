@@ -28,11 +28,9 @@ class ResearchOutput
 	 */
 	public function getPublicationList($settings)
 	{
-						
 		$xml = '<?xml version="1.0"?>
 				<researchOutputsQuery>
 				<linkingStrategy>portalLinkingStrategy</linkingStrategy>
-				<ordering>-publicationYear</ordering>
 				<returnUsedContent>true</returnUsedContent>
 				<navigationLink>true</navigationLink>
 				';
@@ -103,7 +101,6 @@ class ResearchOutput
 		$xml .= CommonUtilities::getPersonsOrOrganisationsXml($settings);
 		
 		$xml .= '</researchOutputsQuery>';
-		
 		$webservice = new WebService;
 		$publications = $webservice->getJson('research-outputs', $xml); 
 		//reduce the array to year, status, rendering, uuid:
@@ -232,7 +229,6 @@ class ResearchOutput
 	 */
 	public function transformArray($publications, $settings)
 	{
-		
 		$array = array();
 		$array['count'] = $publications['count'];
 		$i = 0;

@@ -43,13 +43,16 @@
 				<source>Units and Persons</source>
 			</trans-unit>
 			<trans-unit id="flexform.common.ChooseSelector">
-				<source>Show u:cris entries either for organisational units or for persons:</source>
+				<source>Choose entity for which to show entries:</source>
 			</trans-unit>
 			<trans-unit id="flexform.common.selectByUnit">
 				<source>Show list of chosen endpoint for Organisational Units:</source>
 			</trans-unit>
 			<trans-unit id="flexform.common.selectByPerson">
 				<source>Show list of chosen endpoint for Person(s):</source>
+			</trans-unit>
+			<trans-unit id="flexform.common.selectByProject">
+				<source>Show list of chosen endpoint for Project(s):</source>
 			</trans-unit>
 			<trans-unit id="flexform.common.selectOrganisation">
 				<source>Show list for selected Organisation:</source>
