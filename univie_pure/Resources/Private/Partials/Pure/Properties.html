@@ -127,6 +127,14 @@
 				</f:then>
 			</f:if>
 			
+			<!-- ELECTRONIC VERSION -->
+			<f:if condition="{publication.electronicVersions.0.accessType.0.uri} == '/dk/atira/pure/core/openaccesspermission/open'">
+				<f:if condition="{publication.electronicVersions.0.link}">
+					<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.electronicVersions" /></dt>
+					<dd class="col-sm-9 content-element-margin-small"><a href="{publication.electronicVersions.0.link}" target="_blank">{publication.electronicVersions.0.link}</a></dd>
+				</f:if>
+			</f:if>
+			
 			<!-- PORTAL URL -->
 			<dt class="col-sm-3"><f:translate key="LLL:EXT:univie_pure/Resources/Private/Language/locallang.xlf:univiepur.publication.portalUrl" /></dt>
 			<dd class="col-sm-9 content-element-margin-small"><a href="{publication.info.portalUrl}" target="_blank">{publication.info.portalUrl}</a></dd>
