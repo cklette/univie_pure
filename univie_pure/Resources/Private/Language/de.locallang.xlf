@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
 	<file source-language="en" datatype="plaintext" original="messages" date="2016-01-19T13:00:54Z" product-name="univie_pure">
 		<header/>
@@ -74,6 +74,10 @@
 			<trans-unit id="univiepur.publication.portalUrl">
 				<source>Portal url</source>
 				<target>Link zum Portal</target>
+			</trans-unit>
+			<trans-unit id="univiepur.publication.electronicVersions">
+				<source>Electronic versions</source>
+				<target>Elektronische Version</target>
 			</trans-unit>
 			<trans-unit id="univiepur.more">
 				<source>More...</source>
